@@ -2,10 +2,10 @@
 
 #' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_title(\"#1\")}",
 #' "lcvplants")\Sexpr{tools:::Rd_package_title("lcvplants")}
-#' 
+#'
 #' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_description(\"#1\")}",
 #' "lcvplants")\Sexpr{tools:::Rd_package_description("lcvplants")}
-#' 
+#'
 #' The R-package is able to apply a text-based search of plant names on the LCVP
 #' using a fuzzy match algorithm, which is the core of the searching engine.
 #' The fuzzy match algorithm is applied at genus, epithet, infraspecies and
@@ -53,14 +53,14 @@
 #' stored. If the user wants to submit a single taxon the user has to submit
 #' the sentence as the following example: "LCVP('Payena lancifolia H.J.Lam',
 #' ...)", followed by one or more options.
-#' 
+#'
 #' @name lcvplants-package
 #' @aliases lcvplants-package lcvplants
 #' @docType package
 #' @author
 #' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_author(\"#1\")}",
 #' "lcvplants")\Sexpr{tools:::Rd_package_author("lcvplants")}
-#' 
+#'
 #' Maintainer:
 #' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_maintainer(\"#1\")}",
 #' "lcvplants")\Sexpr{tools:::Rd_package_maintainer("lcvplants")}
@@ -69,7 +69,7 @@
 #' reference list for all known vascular plants.
 #' @keywords nomenclature, taxonomy, vascular plants, R-package
 #' @examples
-#' 
+#'
 #' # To submit one single plant taxa name or a list:
 #' LCVP("Hibiscus vitifolius")
 #' # To submit a plant taxa name to solve some possible orthographic errors:
@@ -87,5 +87,5 @@
 #' LCVP("Hibiscus vitifolius", max.cores = 3)
 #' # To save the result to a Comma-Separated Values (.csv) file:
 #' LCVP("Hibiscus vitifolius", save = TRUE)
-#' 
+#'
 NULL
