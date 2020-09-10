@@ -83,19 +83,19 @@ function(splist,
          save = FALSE,
          visualize = FALSE,
          version = "1.1",
-         max.cores = (detectCores() -1),
+         max.cores = (detectCores() - 1),
          out_path = getwd()) {
 
   start.time <- Sys.time()
 
-  if(.Platform$OS.type == "unix"){
+  if (.Platform$OS.type == "unix") {
     encoding <- "UTF-8"
   }
-  if(Sys.getenv("RSTUDIO") != "1"){
+  if (Sys.getenv("RSTUDIO") != "1") {
     visualize <- FALSE
   }
 
-  if(length(splist) == 1 && tolower(splist) == "list"){
+  if (length(splist) == 1 && tolower(splist) == "list") {
     pathstring <- file.choose()
     splist <- read_data(pathstring, encoding)
   }
@@ -225,42 +225,42 @@ function(splist,
   col <- dim(results)[2]
   row <- dim(results)[1]
   for (i in 1:row)  {
-    name <- results[i,1]
-    if(name != namefirst)
-      iter <- iter +1
+    name <- results[i, 1]
+    if (name != namefirst)
+      iter <- iter + 1
     namefirst <- name
-    Output_Table_tmp <- data.frame(ID = iter, Submitted_Name = results[i,1],
-                                   Order = results[i,2],
-                                   Family = results[i,3],
-                                   Genus = results[i,4],
-                                   Species = results[i,5],
-                                   Infrasp = results[i,6],
-                                   Infraspecies = results[i,7],
-                                   Authors = results[i,8],
-                                   Status = results[i,9],
-                                   LCVP_Accepted_Taxon = results[i,10],
-                                   PL_Comparison = results[i,11],
-                                   PL_Alternative = results[i,12],
-                                   Score = results[i,13],
-                                   Insertion = results[i,14],
-                                   Deletion = results[i,15],
-                                   Substitution = results[i,16],
+    Output_Table_tmp <- data.frame(ID = iter, Submitted_Name = results[i, 1],
+                                   Order = results[i, 2],
+                                   Family = results[i, 3],
+                                   Genus = results[i, 4],
+                                   Species = results[i, 5],
+                                   Infrasp = results[i, 6],
+                                   Infraspecies = results[i, 7],
+                                   Authors = results[i, 8],
+                                   Status = results[i, 9],
+                                   LCVP_Accepted_Taxon = results[i, 10],
+                                   PL_Comparison = results[i, 11],
+                                   PL_Alternative = results[i, 12],
+                                   Score = results[i, 13],
+                                   Insertion = results[i, 14],
+                                   Deletion = results[i, 15],
+                                   Substitution = results[i, 16],
                                    stringsAsFactors = FALSE)
 
     Output_Table <- rbind(Output_Table, Output_Table_tmp)
   }
   if (!is.null(Output_Table$Species[1])) {
     if (save == TRUE) {
-      exec_date <- paste(substring(Sys.time(),1,4),
-                         substring(Sys.time(),6,7),
-                         substring(Sys.time(),9,10),sep="")
-      exec_time <- paste(substring(Sys.time(),12,13),
-                         substring(Sys.time(),15,16),
-                         substring(Sys.time(),18,19),sep="")
-      out_code <- paste(exec_date, "_", exec_time, sep="")
-      table_name <- paste("/LCVP_results_",out_code,".csv",sep = "")
+      exec_date <- paste(substring(Sys.time(), 1, 4),
+                         substring(Sys.time(), 6, 7),
+                         substring(Sys.time(), 9, 10), sep = "")
+      exec_time <- paste(substring(Sys.time(), 12, 13),
+                         substring(Sys.time(), 15, 16),
+                         substring(Sys.time(), 18, 19), sep = "")
+      out_code <- paste(exec_date, "_", exec_time, sep = "")
+      table_name <- paste("/LCVP_results_", out_code, ".csv", sep = "")
       pathstring <- paste(out_path, table_name, sep = "")
-      write.table(Output_Table,pathstring,sep=",",row.names=FALSE)
+      write.table(Output_Table, pathstring, sep = ",", row.names = FALSE)
     }
   } else {message("no match found, check typing or change 'max.distance'")}
 
@@ -271,7 +271,7 @@ function(splist,
   message("-    End of Leipzig Catalogue of Plants (LCVP) search    -")
   message("---------------------------------------------------------")
 
-  if (visualize){
+  if (visualize) {
     View(Output_Table)
   }
   return(Output_Table)
